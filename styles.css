@@ -1,67 +1,177 @@
-body{
+:root {
+    --bg-gradient: linear-gradient(135deg, #1e293b, #0f172a);
+    --calc-bg: rgba(30, 41, 59, 0.7);
+    --display-bg: rgba(15, 23, 42, 0.5);
+    --btn-bg: #334155;
+    --btn-hover: #475569;
+    --op-btn: #f59e0b;
+    --op-hover: #fbbf24;
+    --equal-btn: #10b981;
+    --equal-hover: #34d399;
+    --text-color: #f8fafc;
+}
+
+body {
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: hsl(0, 0%, 95%);
+    background: var(--bg-gradient);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#calculator{
-    font-family: Arial, sans-serif;
-    background-color: hsl(0, 0%, 15%);
-    border-radius: 15px;
-    width: 90%;
-    max-width: 400px;  
-    overflow: hidden;
+#calculator {
+    background: var(--calc-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    width: 340px;
+    padding: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-#display{
+#display {
     width: 100%;
-    padding: 15px;
-    font-size: clamp(2rem, 6vw, 4rem); 
-    text-align: left;
+    height: 80px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    font-size: 2.5rem;
+    text-align: right;
     border: none;
-    background-color: hsl(0, 0%, 20%);
-    color: white;
+    border-radius: 12px;
+    background-color: var(--display-bg);
+    color: var(--text-color);
     box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
 }
 
-#keys{
+#keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 15px;
+    gap: 12px;
 }
 
-button{
-    width: 100%;
-    aspect-ratio: 1 / 1;  
-    border-radius: 50%;
+button {
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
     border: none;
-    background-color: hsl(0, 0%, 30%);
-    color: white;
-    font-size: clamp(1.2rem, 4vw, 2rem); 
-    font-weight: bold;
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-button:hover{
-    background-color: hsl(0, 0%, 40%);
+button:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-2px);
 }
 
-button:active{
-    background-color: hsl(0, 0%, 50%);
+button:active {
+    transform: translateY(0px) scale(0.95);
 }
 
-.operator-btn{
-    background-color: hsl(35, 100%, 55%);
+.operator-btn {
+    background-color: var(--op-btn);
+    color: #000;
 }
 
-.operator-btn:hover{
-    background-color: hsl(35, 100%, 65%);
+.operator-btn:hover {
+    background-color: var(--op-hover);
 }
 
-.operator-btn:active{
-    background-color: hsl(35, 100%, 75%);
+.equals-btn {
+    background-color: var(--equal-btn);
+}
+
+.equals-btn:hover {
+    background-color: var(--equal-hover);
+}
+
+.clear-btn {
+    background-color: #ef4444;
+}
+
+.clear-btn:hover {
+    background-color: #f87171;
+}
+
+
+.zero-btn {
+    grid-column: span 2;
+    aspect-ratio: auto; 
+}
+
+
+.main-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    max-width: 700px;
+    width: 95%;
+}
+
+#history-panel {
+    background: var(--calc-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    width: 250px;
+    height: 450px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+#history-panel h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+#history-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.history-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.history-item span {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+.clear-history-btn {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    aspect-ratio: auto; 
+}
+
+.clear-history-btn:hover {
+    background: #ef4444;
+    color: white;
 }
